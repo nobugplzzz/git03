@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mybatis-study-03" />
+        <module name="mybatis-study-01" />
+        <module name="mybatis-study-01 (2)" />
+        <module name="mybatis-study-06" />
+        <module name="mybatis-study-05" />
+        <module name="mybatis-study-04" />
+      </profile>
+      <profile name="Annotation profile for mybatis-study" enabled="true">
+        <sourceOutputDir name="../mybatis-study-02/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../mybatis-study-02/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mybatis-study-01 (1)" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

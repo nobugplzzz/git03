@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kuang.mapper.StudentMapper">
+
+    <!--查询嵌套，子查询-->
+    <select id="getStudent" resultMap="StudentTeacher">
+    SELECT *
+    FROM student
+    </select>
+
+    <resultMap id="StudentTeacher" type="Student">
+         <!--单个属性id name-->
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <!--复杂的属性 teacher 是对象-->
+        <association property="teacher" column="tid" javaType="Teacher" select="getTeacher"/>
+        
+    </resultMap>
+    
+    <select id="getTeacher" resultType="teacher">
+        SELECT *
+        FROM teacher
+        WHERE id = #{id}
+    </select>
+
+    <!--结果嵌套,连表查询-->
+    <select id="getStudent2" resultMap="StudentTeacher2">
+    SELECT s.id sid,s.name sname,t.id,t.name tname
+    FROM student s,teacher t
+    WHERE s.tid=t.id
+    </select>
+
+    <resultMap id="StudentTeacher2" type="Student">
+        <!--单个属性id name-->
+        <id property="id" column="sid"/>
+        <result property="name" column="sname"/>
+        <!--复杂的属性 tid-->
+        <association property="teacher"  javaType="Teacher" >
+            <id property="id" column="id"/>
+            <result property="name" column="tname"/>
+        </association>
+
+    </resultMap>
+</mapper>
